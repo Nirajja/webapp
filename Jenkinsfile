@@ -1,12 +1,16 @@
 pipeline {
-    agent any
+    agent {
+        node {
+            label "built-in"		
+        }
+	}
 
     stages {
-        stage ('Compile Stage') {	
+        stage (' compile Stage') {
 		
 		    steps {
 			
-			         sh 'mvn clean compile'
+			        sh 'mvn clean compile'
 				}
 
 		}
@@ -15,7 +19,7 @@ pipeline {
 		
 		    steps {
 			
-			         sh 'mvn test'
+			        sh 'mvn test'
 				}
 
 		}
@@ -24,7 +28,7 @@ pipeline {
         stage ('Install Stage') {
             steps {
 
-                   sh 'mvn install'
+                    sh 'mvn install'
 				}
 
 		}
@@ -33,7 +37,7 @@ pipeline {
 		
 		    steps {
 			
-			         echo "This is master branch"
+			        echo "This is master branch"
 				}
 
 		}
