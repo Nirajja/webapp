@@ -1,5 +1,10 @@
 pipeline {
-    agent any 
+    agent {
+	  node {
+	   lebel 'built-in' 
+	customWorkspace '/mnt/jenkins/webapp'
+	}
+}
 	stages {
 	    stage ('Compile Stage') {
 		
