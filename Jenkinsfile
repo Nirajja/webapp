@@ -1,32 +1,60 @@
 pipeline {
-    agent {
-	  "node" {
-	   "lebel" 'built-in' 
-	customWorkspace '/mnt/jenkins/webapp'
-	}
-}
+    agent any {
+	
 	stages {
 	    stage ('Compile Stage') {
-		
+		  
 		    steps {
+      
+                   sh 'mvn clean compile'
+			    }
+
+		}
+	
+	    stage ('Testing Stage') {
+	
+	        steps {
+		
+		           sh 'mvn test'
+			    }
+
+        }
+
+
+        stage ('Install Stage') {
+            steps {
+
+                   sh 'mvn install'
+			    }
+
+        }
+
+        stage ('Echo Branch') [
+    
+            steps {
+
+                   echo "This is master branch"
+			    }
 			
-			       sh 'mvn clean compile'
-				}
+	    }
+
+        stag ('Create Images') {
+
+            steps {
+
+                   sh 'docker build -t tomcatimg .'
+                }
+
+        }
+
+        stage ('Create and Run Container') {
+
+            steps {
+      
+                   sh 'docker run -itd -v /jenkins-data/maven-data/target:/usr/local/tomcat/webapps -p 8080:8080 --name server1 tomcatimg'  
+			    }
+				   
 		}
 
-		stage ('Testing Stage') {
-		
-		    steps {
-			
-			       sh 'mvn test'
-				}
-		}
-
-		stage ('Install Stage') {
-		    steps {
-			
-			       sh 'mvn install'
-				}
-			}
 	}
-}
+}	
