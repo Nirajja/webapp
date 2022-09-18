@@ -1,7 +1,7 @@
 pipeline {
     agent {
-	  node {
-	   lebel 'built-in' 
+	  "node" {
+	   "lebel" 'built-in' 
 	customWorkspace '/mnt/jenkins/webapp'
 	}
 }
@@ -29,4 +29,4 @@ pipeline {
 				}
 			}
 	}
-}	
+}
