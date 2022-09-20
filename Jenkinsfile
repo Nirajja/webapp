@@ -51,10 +51,11 @@ pipeline {
 
             steps {
       
-                   sh 'docker run -itd -v /jenkins-data/maven-data/target:/usr/local/tomcat/webapps -p 8080:8080 --name server1 tomcatimg'  
+                   sh 'docker run -itd -v /jenkins-data/maven-data/webapp/target:/usr/local/tomcat/webapps -p 8080:8080 --name server1 tomcatimg'  
 			    }
 				   
 		}
 
 	}
-}	
+
+    }	    
