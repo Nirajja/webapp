@@ -29,14 +29,14 @@ pipeline {
 
         }
 
-		stage ('Echo Branch') {
+        stage ('Echo Branch') {
     
             steps {
 
                    echo "This is master branch"
 			    }
 			
-		}
+	    }
 
         stag ('Create Images') {
 
