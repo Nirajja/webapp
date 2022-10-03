@@ -24,7 +24,7 @@ pipeline {
                steps {
                    sh 'scp /home/ec2-user/webapp/target/*.war crm-test@10.0.2.105:/home/ec2-user/testwar'
 				   sh 'ssh crm-test@10.0.2.105 sudo docker pull tomcat'
-				   sh 'ssh crm-test@10.0.2.105 run -itd -v /home/ec2-user/testwar:/usr/local/tomcat/webapps -p 8060:8080 tomcat'
+				   sh 'ssh crm-test@10.0.2.105 run -itd -v /home/ec2-user/testwar:/usr/local/tomcat/webapps -p 8050-8070:8080 tomcat'
                 }
             
             }
