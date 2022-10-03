@@ -22,7 +22,7 @@ pipeline {
             stage ('Depoly-on-crm-test') {
                
                steps {
-                   sh 'scp /home/ec2-user/webapp/target/*.war crm-test@10.0.2.105:/home/ec2-user'
+                   sh 'scp /home/ec2-user/webapp/target/*.war crm-test@10.0.2.105:/home/ec2-user/testwar'
                 }
             
             }
